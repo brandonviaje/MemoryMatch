@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Match</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="../css/memory_match.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav
+      class="navbar is-transparent"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        <a class="navbar-item has-text-weight-bold site-title">
+          Memory Match
+        </a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="mainNavbar"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="mainNavbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="memory_match.html"> Play Game </a>
+
+          <a class="navbar-item" href="high_scores.html"> High Scores </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <div class="title">
+        <h1>Memory Match</h1>
+        <div class="title-row">
+          <p>
+            Flip two cards at a time. If they match, they stay revealed. Match
+            all pairs to win.
+          </p>
+          <div id="message"></div>
+        </div>
+      </div>
+
+      <div class="content-layout">
+        <div class="game-panel">
+          <h1 class="title">Game Status</h1>
+          <div id="status-panel">
+            <p class="is-size-4">
+              <strong>Moves:</strong> <span id="moves">0</span>
+            </p>
+            <p class="is-size-4">
+              <strong>Matches:</strong> <span id="matches">0</span> /
+              <span id="total-pairs">8</span>
+            </p>
+            <p class="is-size-4">
+              <strong>Time:</strong> <span id="time">0</span> s
+            </p>
+          </div>
+          <div class="button-panel">
+            <button id="btn-new-game">New Game</button>
+            <button id="btn-reset">Reset (Same Board)</button>
+          </div>
+        </div>
+
+        <div class="board-container">
+          <div class="board-header">
+            <h1 class="title">Board</h1>
+            <div class="difficulty-selector">
+              <label for="difficulty">Difficulty: </label>
+              <select id="difficulty">
+                <option value="4">Easy (4x4)</option>
+                <option value="6">Hard (6x6)</option>
+              </select>
+            </div>
+          </div>
+          <div id="board"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/memory_match.js"></script>
+  </body>
+</html>
