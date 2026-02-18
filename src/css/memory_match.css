@@ -1,5 +1,4 @@
-html,
-body {
+html,body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -10,7 +9,6 @@ body {
 }
 
 /* NavBar*/
-
 .navbar {
   background-color: #bdbbb0;
   border-bottom: 1px solid #f2f2f2;
@@ -35,9 +33,7 @@ body {
 
 .navbar-brand .navbar-item.site-title:hover {
   color: inherit;
-  background: none;
 }
-
 
 /*Title*/
 .title {
@@ -56,6 +52,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -63,6 +60,7 @@ body {
   margin: 0;
   font-size: 26px;
   flex: 1;
+  min-width: 200px; 
 }
 
 /* Content Section*/
@@ -83,14 +81,16 @@ body {
 
 /* Board Section*/
 .board-container {
-  height: 770px;
-  width: 1200px;
   background-color: white;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  height: 770px;
+  flex: 1 1 800px;  
+  min-width: 0;  
+  max-width: 1200px;
 }
 
 .board-header {
@@ -121,10 +121,11 @@ body {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 450px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  flex: 0 0 400px;   
+  max-width: 450px;  
 }
 
 .button-panel {
@@ -150,7 +151,6 @@ body {
   color: #ffffff;
   box-sizing: border-box;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 #btn-new-game {background-color: #96e6b3;}
@@ -158,7 +158,6 @@ body {
 .button-panel button:hover {transform: scale(1.02);}
 
 /*Cards*/
-
 .card {
   background-color: #1a1f33;
   border: 3px solid #111;
@@ -169,8 +168,7 @@ body {
   height: 100%;
 }
 
-.back,
-.face {
+.back,.face {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -181,32 +179,24 @@ body {
 
 .matched {
   background-color: #2ecc71;
-  color: white;
   pointer-events: none;
 }
 
-.wrong {
-  background-color: #e74c3c;
-  color: white;
-}
+.wrong {background-color: #e74c3c;}
 
 #message {
   display: none;
   margin: 5px 0 0 0;
   padding: 6px 20px;
-  background-color: #f0f4f8;
   border-left: 6px solid #96e6b3;
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 600;
-  color: #1a1f33;
   text-align: center;
   max-width: 500px;
   box-sizing: border-box;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  word-wrap: break-word;
-  line-height: 1.2;
+  flex: 0 0 100%; 
 }
 
 #message.winner {
@@ -226,13 +216,10 @@ body {
 }
 
 #scores-table {
-  width: 100%; 
-  max-width: 2050px;
-  margin: 20px auto 50px auto;
+  width: 100%;
+  margin: 20px 0 50px 0; 
   border-collapse: collapse;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  overflow: hidden;
   background-color: #ffffff;
 }
 
