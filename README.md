@@ -1,4 +1,4 @@
-# Lab 01–03 — Memory Match (Starter Code)
+# Memory Match
 
 This starter package supports Labs 01–03 for **CSCI3230U Web App Development**.
 
@@ -7,17 +7,11 @@ You will build a two-page web app:
 - `memory_match.html` — the game page
 - `high_scores.html` — the high scores page
 
-Over three labs you will add:
-
-- **Lab 01:** HTML structure and content
-- **Lab 02:** Styling with Bulma + custom CSS (responsive layout)
-- **Lab 03:** JavaScript logic (dynamic board, events, dynamic scores table)
-
 ---
 
 ## Directory Structure
 
-L01-03/
+Memory-Match/
 ├─ README.md
 └─ src/
    ├─ pages/
