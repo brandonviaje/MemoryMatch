@@ -11,6 +11,7 @@ You will build a two-page web app:
 
 ## Directory Structure
 
+```text
 Memory-Match/
 ├─ README.md
 └─ src/
@@ -22,6 +23,7 @@ Memory-Match/
    └─ js/
       ├─ memory_match.js
       └─ high_scores.js
+```
 
 ---
 
