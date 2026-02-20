@@ -2,11 +2,6 @@
 
 This starter package supports Labs 01–03 for **CSCI3230U Web App Development**.
 
-You will build a two-page web app:
-
-- `memory_match.html` — the game page
-- `high_scores.html` — the high scores page
-
 ---
 
 ## Directory Structure
@@ -38,13 +33,6 @@ If links are correct, the page will load:
 - `../css/memory_match.css`
 - `../js/memory_match.js`
 
-Open the high scores page:
+Open high scores page:
 
 - `src/pages/high_scores.html`
-
----
-
-## Notes
-
-- If you see missing script/style errors, check your relative paths from `src/pages/`.
-- If you use features like `fetch()` later, you may need to run a local server (e.g., VS Code Live Server).
