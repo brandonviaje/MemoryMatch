@@ -10,7 +10,7 @@ const resetBtn = document.getElementById("btn-reset");
 const newGameBtn = document.getElementById("btn-new-game");
 const difficultyDropdown = document.getElementById("difficulty");
 
-const emojis = ["🍎","🍌","🍇","🍉","🍒","🥝","🍍","🍑","🥥","🍓","🍋","🍈","🍊","🥭","🍏","🍐","🍅","🥑",];
+const emojis = ["🍎","🍌","🍇","🍉","🍒","🥝","🍍","🍑","🥥","🍓","🍋","🍈","🍊","🥭","🍏","🍐","🍅","🥑"];
 
 let flippedCards = [];
 let moves = 0;
@@ -29,15 +29,14 @@ function shuffle(array) {
 
 // show card face
 function showCard(card) {
-  card.innerHTML = `<div class="face">${card.dataset.face}</div>`;
+  card.classList.add("flipped");
   card.dataset.flipped = "true";
 }
 
 // hide card face
 function hideCard(card) {
-  card.innerHTML = `<div class="back">❓</div>`;
+  card.classList.remove("flipped", "wrong");
   card.dataset.flipped = "false";
-  card.classList.remove("wrong");
 }
 
 // card flip 
@@ -46,12 +45,11 @@ function flipCard(e) {
   const card = e.currentTarget;
 
   // prevent clicking already flipped or matched cards
-  if (card.dataset.flipped === "true" || card.classList.contains("matched"))
-    return;
+  if (card.dataset.flipped === "true" || card.classList.contains("matched")) return;
 
   showCard(card);
   flippedCards.push(card);
-  // if user flipped 2 cards, lock board, update move and check for match
+
   if (flippedCards.length === 2) {
     lockBoard = true;
     moves++;
@@ -64,26 +62,21 @@ function flipCard(e) {
 function checkMatch() {
   const [card1, card2] = flippedCards;
 
-  // check if face of cards match
+  // check for match
   if (card1.dataset.face === card2.dataset.face) {
-    // mark both cards as permanently matched
     card1.classList.add("matched");
     card2.classList.add("matched");
-
-    // increment matches counter and update display
-    matches++;
+    matches++; // increment matches
     statusMatches.textContent = matches;
 
-    resetFlip(); // reset the flippedCards array and unlock the board
+    resetFlip();
 
-    // if all pairs are matched, end the game
+    // check if total pairs are matched
     if (matches === currentBoard.length / 2) endGame();
   } else {
-    // cards dont match: highlight them as wrong
     card1.classList.add("wrong");
     card2.classList.add("wrong");
 
-    // hide cards again and reset flippedCards
     setTimeout(() => {
       hideCard(card1);
       hideCard(card2);
@@ -99,12 +92,10 @@ function resetFlip() {
 
 // start timer
 function startTimer() {
-  clearInterval(timerInterval); // clear timer
-
+  clearInterval(timerInterval);
   timer = 0;
   statusTime.textContent = timer;
 
-  // increment timer
   timerInterval = setInterval(() => {
     timer++;
     statusTime.textContent = timer;
@@ -122,9 +113,7 @@ function resetStatus() {
 
 // game end
 function endGame() {
-  clearInterval(timerInterval); // clear timer
-
-  // show message
+  clearInterval(timerInterval);
   message.textContent = `You won! ${moves} moves, ${timer} seconds.`;
   message.classList.add("winner");
   message.style.display = "block";
@@ -136,7 +125,12 @@ function createCard(emoji) {
   card.classList.add("card");
   card.dataset.face = emoji;
   card.dataset.flipped = "false";
-  card.innerHTML = `<div class="back">❓</div>`;
+
+  const face = document.createElement("div");
+  face.classList.add("card-face");
+  face.textContent = emoji;
+
+  card.appendChild(face);
   card.addEventListener("click", flipCard);
   return card;
 }
@@ -150,24 +144,22 @@ function prepareBoardForPlay() {
   startTimer();
 }
 
-// build dynamic board (4x4 or 6x6)
+// build dynamic board
 function buildBoardDynamic(rows, cols) {
   board.innerHTML = "";
   currentRows = rows;
   currentCols = cols;
-  board.style.setProperty("--rows", rows); // CSS height calculation
+  board.style.setProperty("--rows", rows);
 
-  const totalPairs = (rows * cols) / 2;
-
-  // update DOM
+  const totalPairs = (rows * cols) / 2; // calc total pairs
   const totalPairsSpan = document.getElementById("total-pairs");
   if (totalPairsSpan) totalPairsSpan.textContent = totalPairs;
 
   let selectedEmojis = emojis.slice(0, totalPairs);
-  let cardsArray = shuffle([...selectedEmojis, ...selectedEmojis]); // shuffle cards
+  let cardsArray = shuffle([...selectedEmojis, ...selectedEmojis]);
   currentBoard = cardsArray.slice();
 
-  cardsArray.forEach((emoji) => board.appendChild(createCard(emoji)));
+  cardsArray.forEach(emoji => board.appendChild(createCard(emoji))); // add card to board
   board.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
 
   prepareBoardForPlay();

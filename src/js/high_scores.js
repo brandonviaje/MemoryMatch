@@ -9,7 +9,7 @@ const scores = [
   { player: "Ivy", moves: 31, time: 90, date: "2026-01-05" },
   { player: "Sam", moves: 33, time: 95, date: "2026-01-05" },
   { player: "Kai", moves: 34, time: 101, date: "2026-01-03" },
-  { player: "Emma", moves: 35, time: 104, date: "2026-01-03" }
+  { player: "Emma", moves: 35, time: 104, date: "2026-01-03" },
 ];
 
 const scoresBody = document.getElementById("scores-body");

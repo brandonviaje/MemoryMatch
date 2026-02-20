@@ -1,11 +1,11 @@
-html,body {
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
-  background-color: #f7f9f9;
-  overflow: auto;
   font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 /* NavBar*/
@@ -168,21 +168,23 @@ html,body {
   height: 100%;
 }
 
-.back,.face {
-  display: flex;
+.card-face {
+  display: flex;           
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-.matched {
+.card.wrong {background-color: #e74c3c;}
+.card.flipped .card-face {opacity: 1;}
+
+.card.matched {
   background-color: #2ecc71;
   pointer-events: none;
 }
-
-.wrong {background-color: #e74c3c;}
 
 #message {
   display: none;
@@ -207,42 +209,53 @@ html,body {
 
 /* High Scores */
 .title-high-score {
-  margin-left: 50px;    
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-size: 3rem;      
+  font-size: clamp(2rem, 5vw, 3rem); 
   font-weight: 800;
-  color: #363636;
+  margin: 20px;
+  text-align: center;
+  flex-shrink: 0;                    
+}
+
+.scores-container {
+  flex: 1;                  
+  width: 100%;
+  overflow: auto;            
+  display: flex;
+  justify-content: center;  
+  align-items: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #ffffff;
 }
 
 #scores-table {
   width: 100%;
-  margin: 20px 0 50px 0; 
   border-collapse: collapse;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
+  table-layout: auto;
 }
 
-#scores-table thead {
-  background-color: #6290C3;
-  color: white;
-  font-weight: 700;
-  text-align: left;
+#scores-table th, #scores-table td {
+  padding: 12px 8px;
+  text-align: center;
+  font-size: clamp(0.9rem, 2vw, 1.2rem); 
 }
 
 #scores-table thead th {
-  padding: 14px 24px;
+  text-align: center;
+  font-weight: 700;
   font-size: 1.2rem;
-}
-
-#scores-table tbody tr {
-  border-bottom: 1px solid #e5e5e5;
-  transition: background-color 0.2s ease;
+  padding: 18px 8px;
+  border-bottom: 2px solid #e5e5e5;
 }
 
 #scores-table td {
-  padding: 12px 20px;
-  font-size: 1rem;
-  font-weight: bold;
+  text-align: center;
+  padding: 18px 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
   color: #363636;
+}
+
+#scores-table tbody tr {
+  border-bottom: 1px solid #eaeaea;
 }
