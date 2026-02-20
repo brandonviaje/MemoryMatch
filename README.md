@@ -1,4 +1,4 @@
-# Memory Match - Brandon Viaje
+# Memory Match
 
 This starter package supports Labs 01–03 for **CSCI3230U Web App Development**.
 
